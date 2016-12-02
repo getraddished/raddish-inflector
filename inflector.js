@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var uncountable,
     rule,
@@ -11,93 +11,95 @@ var uncountable,
  * @author Jasper van Rijbroek <jasper@jvar.nl>
  * @constructor
  */
-function Inflector() {
-    this.plurals = [
-        [/move$/i, 'moves'],
-        [/sex$/i,'sexes'],
-        [/child$/i, 'children'],
-        [/man$/i, 'men'],
-        [/foot$/i, 'feet'],
-        [/person$/i, 'people'],
-        [/taxon$/i, 'taxa'],
-        [/(quiz)$/i, '$1zes'],
-        [/^(ox)$/i, '$1en'],
-        [/(m|l)ouse$/i, '$1ice'],
-        [/(matr|vert|ind|suff)ix|ex$/i, '$1ices'],
-        [/(x|ch|ss|sh)$/i, '$1es'],
-        [/([^aeiouy]|qu)y$/i, '$1ies'],
-        [/(?:([^f])fe|([lr])f)$/i, '$1$2ves'],
-        [/sis$/i, 'ses'],
-        [/([ti]|addend)um$/i, '$1a'],
-        [/(alumn|formul)a$/i, '$1ae'],
-        [/(buffal|tomat|her)o$/i, '$1oes'],
-        [/(bu)s$/i, '$1ses'],
-        [/(alias|status)$/i, '$1es'],
-        [/(octop|vir)us$/i, '$1i'],
-        [/(gen)us$/i, '$1era'],
-        [/(ax|test)is$/i, '$1es'],
-        [/s$/i, 's'],
-        [/$/, 's']
-    ];
+class Inflector {
+    constructor() {
+        this.plurals = [
+            [/move$/i, 'moves'],
+            [/sex$/i,'sexes'],
+            [/child$/i, 'children'],
+            [/man$/i, 'men'],
+            [/foot$/i, 'feet'],
+            [/person$/i, 'people'],
+            [/taxon$/i, 'taxa'],
+            [/(quiz)$/i, '$1zes'],
+            [/^(ox)$/i, '$1en'],
+            [/(m|l)ouse$/i, '$1ice'],
+            [/(matr|vert|ind|suff)ix|ex$/i, '$1ices'],
+            [/(x|ch|ss|sh)$/i, '$1es'],
+            [/([^aeiouy]|qu)y$/i, '$1ies'],
+            [/(?:([^f])fe|([lr])f)$/i, '$1$2ves'],
+            [/sis$/i, 'ses'],
+            [/([ti]|addend)um$/i, '$1a'],
+            [/(alumn|formul)a$/i, '$1ae'],
+            [/(buffal|tomat|her)o$/i, '$1oes'],
+            [/(bu)s$/i, '$1ses'],
+            [/(alias|status)$/i, '$1es'],
+            [/(octop|vir)us$/i, '$1i'],
+            [/(gen)us$/i, '$1era'],
+            [/(ax|test)is$/i, '$1es'],
+            [/s$/i, 's'],
+            [/$/, 's']
+        ];
 
-    this.singulars = [
-        [/cookies$/i, 'cookie'],
-        [/moves$/i, 'move'],
-        [/sexes$/i, 'sex'],
-        [/children$/i, 'child'],
-        [/men$/i, 'man'],
-        [/feet$/i, 'foot'],
-        [/people$/i, 'person'],
-        [/taxa$/i, 'taxon'],
-        [/databases$/i, 'database'],
-        [/(quiz)zes$/i, '$1'],
-        [/(matr|suff)ices$/i, '$1ix'],
-        [/(vert|ind)ices$/i, '$1ex'],
-        [/^(ox)en/i, '$1'],
-        [/(alias|status)es$/i, '$1'],
-        [/(alias|status)$/i, '$1'],
-        [/(tomato|hero|buffalo)es$/i, '$1'],
-        [/([octop|vir])i$/i, '$1us'],
-        [/(gen)era$/i, '$1us'],
-        [/(cris|^ax|test)es$/i, '$1is'],
-        [/(shoe)s$/i, '$1'],
-        [/(o)es$/i, '$1'],
-        [/(bus)es$/i, '$1'],
-        [/([m|l])ice$/i, '$1ouse'],
-        [/(x|ch|ss|sh)es$/i, '$1'],
-        [/(m)ovies$/i, '$1ovie'],
-        [/(s)eries$/i, '$1eries'],
-        [/([^aeiouy]|qu)ies$/i, '$1y'],
-        [/([lr])ves$/i, '$1f'],
-        [/(tive)s$/i, '$1'],
-        [/(hive)s$/i, '$1'],
-        [/([^f])ves$/i, '$1fe'],
-        [/(^analy)ses$/i, '$1sis'],
-        [/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i, '$1$2sis'],
-        [/([ti]|addend)a$/i, '$1um'],
-        [/(alumn|formul)ae$/i, '$1a'],
-        [/(n)ews$/i, '$1ews'],
-        [/(.*)ss$/i, '$1ss'],
-        [/(.*)s$/i, '$1']
-    ];
+        this.singulars = [
+            [/cookies$/i, 'cookie'],
+            [/moves$/i, 'move'],
+            [/sexes$/i, 'sex'],
+            [/children$/i, 'child'],
+            [/men$/i, 'man'],
+            [/feet$/i, 'foot'],
+            [/people$/i, 'person'],
+            [/taxa$/i, 'taxon'],
+            [/databases$/i, 'database'],
+            [/(quiz)zes$/i, '$1'],
+            [/(matr|suff)ices$/i, '$1ix'],
+            [/(vert|ind)ices$/i, '$1ex'],
+            [/^(ox)en/i, '$1'],
+            [/(alias|status)es$/i, '$1'],
+            [/(alias|status)$/i, '$1'],
+            [/(tomato|hero|buffalo)es$/i, '$1'],
+            [/([octop|vir])i$/i, '$1us'],
+            [/(gen)era$/i, '$1us'],
+            [/(cris|^ax|test)es$/i, '$1is'],
+            [/(shoe)s$/i, '$1'],
+            [/(o)es$/i, '$1'],
+            [/(bus)es$/i, '$1'],
+            [/([m|l])ice$/i, '$1ouse'],
+            [/(x|ch|ss|sh)es$/i, '$1'],
+            [/(m)ovies$/i, '$1ovie'],
+            [/(s)eries$/i, '$1eries'],
+            [/([^aeiouy]|qu)ies$/i, '$1y'],
+            [/([lr])ves$/i, '$1f'],
+            [/(tive)s$/i, '$1'],
+            [/(hive)s$/i, '$1'],
+            [/([^f])ves$/i, '$1fe'],
+            [/(^analy)ses$/i, '$1sis'],
+            [/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i, '$1$2sis'],
+            [/([ti]|addend)a$/i, '$1um'],
+            [/(alumn|formul)ae$/i, '$1a'],
+            [/(n)ews$/i, '$1ews'],
+            [/(.*)ss$/i, '$1ss'],
+            [/(.*)s$/i, '$1']
+        ];
 
-    this.uncountables = [
-        'aircraft',
-        'cannon',
-        'deer',
-        'equipment',
-        'fish',
-        'information',
-        'money',
-        'moose',
-        'rice',
-        'series',
-        'sheep',
-        'species',
-        'swine'
-    ];
+        this.uncountables = [
+            'aircraft',
+            'cannon',
+            'deer',
+            'equipment',
+            'fish',
+            'information',
+            'money',
+            'moose',
+            'rice',
+            'series',
+            'sheep',
+            'species',
+            'swine'
+        ];
 
-    this.defined = [];
+        this.defined = [];
+    }
 
     /**
      * Define a special rule in the inflector
@@ -105,11 +107,13 @@ function Inflector() {
      * @param {String} single The singular of the rule
      * @param {String} plural The plural of the rule
      */
-    this.define = function (single, plural) {
+    define(single, plural) {
         this.defined.push({ single: single, plural: plural});
-    };
 
-    this.isDefined = function (property, word) {
+        return this;
+    }
+
+    isDefined(property, word) {
         var definedWord;
 
         for(var i = 0; i < this.defined.length; i++) {
@@ -121,15 +125,15 @@ function Inflector() {
         }
 
         return false;
-    };
+    }
 
-    this.getDefined = function (property, word) {
+    getDefined(property, word) {
         var defined = this.isDefined(property, word);
 
         return defined !== false ? this.defined[defined] : undefined;
-    };
+    }
 
-    this.isCountable = function(word) {
+    isCountable(word) {
         for (var i = 0; i < this.uncountables.length; i++) {
             uncountable = this.uncountables[i];
 
@@ -139,7 +143,7 @@ function Inflector() {
         }
 
         return false;
-    };
+    }
 
     /**
      * singularize method will make a singular of a plural word
@@ -149,7 +153,7 @@ function Inflector() {
      * @param {String} word Word to singularize
      * @returns {String} Singular word
      */
-    this.singularize = function (word) {
+    singularize(word) {
         var defined,
             wlc,
             countable,
@@ -186,7 +190,7 @@ function Inflector() {
      * @param {string} word Word to pluralize
      * @returns {String} Plural word
      */
-    this.pluralize = function (word) {
+    pluralize(word) {
         var defined,
             wlc,
             countable,
@@ -215,7 +219,7 @@ function Inflector() {
         }
 
         return word;
-    };
+    }
 
     /**
      * Function to make the first letter of a sentence capital
@@ -224,9 +228,9 @@ function Inflector() {
      * @param {String} word Word to capitalize
      * @return {String} Capitalized word
      */
-    this.capitalize = function (word) {
+    capitalize(word) {
         return word.substring(0,1).toUpperCase() + word.substring(1, word.length);
-    };
+    }
 
     /**
      * isSingular method will check if the word is singular or not.
@@ -236,12 +240,9 @@ function Inflector() {
      * @param {String} word The word to check
      * @returns {boolean} True or false.
      */
-    this.isSingular = function (word) {
-        if (this.singularize(this.pluralize(word)) === word) {
-            return true;
-        }
-        return false;
-    };
+    isSingular(word) {
+        return (this.singularize(this.pluralize(word)) === word);
+    }
 
     /**
      * isPlural method will check if the word is plural or not.
@@ -251,12 +252,9 @@ function Inflector() {
      * @param {String} word The word to check
      * @returns {boolean} True or false.
      */
-    this.isPlural = function (word) {
-        if (this.pluralize(this.singularize(word)) === word) {
-            return true;
-        }
-        return false;
-    };
+    isPlural(word) {
+        return (this.pluralize(this.singularize(word)) === word);
+    }
 }
 
 module.exports = new Inflector();
