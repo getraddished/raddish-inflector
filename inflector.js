@@ -1,9 +1,5 @@
 'use strict';
 
-var uncountable,
-    rule,
-    replacement;
-
 /**
  * Inflector class to allow REST
  *
@@ -15,7 +11,7 @@ class Inflector {
     constructor() {
         this.plurals = [
             [/move$/i, 'moves'],
-            [/sex$/i,'sexes'],
+            [/sex$/i, 'sexes'],
             [/child$/i, 'children'],
             [/man$/i, 'men'],
             [/foot$/i, 'feet'],
@@ -134,7 +130,10 @@ class Inflector {
     }
 
     isCountable(word) {
-        for (var i = 0; i < this.uncountables.length; i++) {
+        var uncountable = null,
+            i = 0;
+
+        for (i = 0; i < this.uncountables.length; i++) {
             uncountable = this.uncountables[i];
 
             if (word === uncountable) {
@@ -154,10 +153,12 @@ class Inflector {
      * @returns {String} Singular word
      */
     singularize(word) {
-        var defined,
-            wlc,
-            countable,
-            defined = this.getDefined('plural', word);
+        var wlc = '',
+            countable = false,
+            defined = this.getDefined('plural', word),
+            rule = null,
+            replacement = null,
+            i = 0;
 
         if (defined !== undefined) {
             return defined.single;
@@ -170,7 +171,7 @@ class Inflector {
             return this.isCountable(wlc);
         }
 
-        for (var i = 0; i < this.singulars.length; i++) {
+        for (i = 0; i < this.singulars.length; i++) {
             rule = this.singulars[i][0];
             replacement = this.singulars[i][1];
 
@@ -191,10 +192,12 @@ class Inflector {
      * @returns {String} Plural word
      */
     pluralize(word) {
-        var defined,
-            wlc,
-            countable,
-            defined = this.getDefined('single', word);
+        var wlc = '',
+            countable = false,
+            defined = this.getDefined('single', word),
+            replacement = null,
+            rule = null,
+            i = 0;
 
         if (defined !== undefined) {
             return defined.plural;
@@ -209,7 +212,7 @@ class Inflector {
             return this.isCountable(wlc);
         }
 
-        for (var i = 0; i < this.plurals.length; i++) {
+        for (i = 0; i < this.plurals.length; i++) {
             rule = this.plurals[i][0];
             replacement = this.plurals[i][1];
 
@@ -229,7 +232,7 @@ class Inflector {
      * @return {String} Capitalized word
      */
     capitalize(word) {
-        return word.substring(0,1).toUpperCase() + word.substring(1, word.length);
+        return word.substring(0, 1).toUpperCase() + word.substring(1, word.length);
     }
 
     /**
