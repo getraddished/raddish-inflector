@@ -18,6 +18,7 @@ describe('Singularize tests', function() {
         Inflector.singularize('house').should.equal('house');
         Inflector.singularize('houses').should.equal('house');
         Inflector.singularize('theses').should.equal('thesis');
+        Inflector.singularize('trees').should.equal('tree');
 
         done();
     });
